@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Costing</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="project-overview" class="project-section">
+            <h2>Project: Robot Integration Costing Analysis</h2>
+            <br>
+            <p>This project involved a comprehensive costing analysis comparing the use of cold rooms with mobile robotic arms for dark store operations to traditional methods using glass door refrigerators and manual labor. The study demonstrated substantial cost savings, improved energy efficiency, and labor reduction by implementing robotic systems, with an estimated ROI of 3 months.</p>
+            <img src="{% static 'robot-integration-main.jpg' %}" alt="Robot Integration Image" class="project-main-image" width="600px">
+            <p><center><i>This image along with thumbnail image are property of 1M Robotics.</i></center></p>
+        </section>
+    
+        <section id="project-description" class="project-section">
+            <h2>Project Description</h2>
+            <br>
+            <p>The aim of this project was to evaluate the economic viability of replacing traditional refrigeration and manual labor systems in dark stores with cold rooms and articulated robotic arms. By performing detailed cost analysis, the project calculated whole life costs (WLC) for both systems, considering initial setup, maintenance, and energy consumption. The study revealed that robotic systems could save approximately £1.84 million in upfront costs and reduce yearly energy expenses by 90%, alongside reducing labor costs by 50%.</p>
+        </section>
+    
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2>
+            <br>
+            <ul>
+                <li><strong>Cost Efficiency:</strong> Demonstrated a £1.84 million upfront cost savings and reduced annual operational costs by £1 million per store using cold rooms and robotic arms.</li>
+                <br>
+                <li><strong>Energy Savings:</strong> Achieved a 90% reduction in energy usage by replacing glass door refrigerators with highly efficient cold rooms.</li>
+                <br>
+                <li><strong>Labor Reduction:</strong> Implemented a robotic system that reduced personnel requirements by 50%, contributing to a projected ROI in just 3 months.</li>
+                <br>
+                <li><strong>Sustainability:</strong> Lowered environmental impact, with recycling costs cut by £141,990 and potential for net-zero carbon emissions in the long term.</li>
+            </ul>
+        </section>
+    
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2>
+            <br>
+            <ul>
+                <li><strong>Articulated Robotic Arms:</strong> Utilised for automated picking and restocking in cold rooms, replacing manual labor.</li>
+                <br>
+                <li><strong>Cost Forecasting:</strong> Applied analogy, extrapolation, and engineering methodologies to calculate whole life costs and energy savings.</li>
+                <br>
+                <li><strong>Sustainability Analysis:</strong> Assessed environmental benefits, including reduced energy consumption and waste.</li>
+                <br>
+                <li><strong>Return on Investment (ROI) Calculation:</strong> Estimated ROI based on cost savings in labor, energy, and maintenance.</li>
+            </ul>
+        </section>
+
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>Revevant images taken from the costing report:</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'cold-robot1.jpg' %}" alt="E-commerce Platform Image 1" class="project-image"> 
+                <p><center><i>3D render of FANUC CRX on a custom mobile pedestal, sold together on Vention.</i></center></p>
+                <img src="{% static 'cold-robot2.jpg' %}" alt="E-commerce Platform Image 2" class="project-image">
+                <p><center><i>Graph obtained from WLC Calculator.xlsx showing whole life cost differences between stores.</i></center></p> 
+                <img src="{% static 'cold-robot3.jpg' %}" alt="E-commerce Platform Image 3" class="project-image">
+                <p><center><i>Clear linear WLC increase as store size increases, no benefit to larger store size.</i></center></p>
+                <img src="{% static 'cold-robot4.jpg' %}" alt="E-commerce Platform Image 3" class="project-image">  
+                <p><center><i>WLC appears to follow a logarithmic increase, larger stores prove more efficient.</i></center></p>
+            </div> 
+        </section>
+    
+        <section id="project-report" class="project-section">
+            <h2>Full Costing Report</h2>
+            <br>
+            <p>Below is a pdf of the full costing report, do give it a brief read if you are interested and have a moment:</p>
+            <br>
+            <center><object class="pdf' %}" data="{% static 'Should Dark Stores Use Cold Rooms With Articulated Robotic Arms.pdf' %}" width="800" height="1160"></object></center>
+        </section>
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

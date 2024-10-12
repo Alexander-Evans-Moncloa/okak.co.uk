@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanilla Europa</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="project-overview" class="project-section">
+            <h2>Project: Vanilla Europa Business Case Study</h2>
+            <br>
+            <p>This case study analyses the business and technical aspects of running a Minecraft multiplayer server, Vanilla Europa, focusing on cost optimisation, monetisation strategies, and player engagement. The goal was to develop a robust server infrastructure that supports scalability while minimising operational costs, resulting in a sustainable business model for long-term growth.</p>
+            <img src="{% static 'vanilla-europa-server.jpg' %}" alt="Vanilla Europa Image" class="project-main-image" width="600px">
+            <p><center><i>Visual representation of future Vanilla Europa server infrastructure.</i></center></p>
+        </section>
+    
+        <section id="project-description" class="project-section">
+            <h2>Project Description</h2>
+            <br>
+            <p>This project aimed to evaluate the financial and technical requirements of operating a multiplayer Minecraft server. Through in-depth market research, cost analysis, and player behavior tracking, this study explored ways to increase player retention and monetise in-game features. Strategies such as donation models, server-wide events, and pay-to-play elements were assessed for their impact on revenue generation and community engagement.</p>
+        </section>
+    
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2>
+            <br>
+            <ul>
+                <li><strong>Cost Optimisation:</strong> Analysed server hosting costs, infrastructure scaling options, and cloud solutions to reduce expenses by 30% while maintaining uptime and performance.</li>
+                <br>
+                <li><strong>Player Engagement:</strong> Improved player retention through community events, consistent content updates, and loyalty reward systems.</li>
+                <br>
+                <li><strong>Revenue Generation:</strong> Implemented a donation-based monetisation strategy that increased monthly donations by 25% while keeping the server free to play.</li>
+                <br>
+                <li><strong>Scalability:</strong> Designed an infrastructure capable of scaling dynamically with player activity, ensuring minimal latency even during peak usage.</li>
+            </ul>
+        </section>
+    
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2>
+            <br>
+            <ul>
+                <li><strong>Cloud Infrastructure:</strong> Leveraged cloud solutions for scalable server hosting, reducing operational costs and ensuring high availability.</li>
+                <br>
+                <li><strong>Player Behavior Analytics:</strong> Used data tracking to analyse player activity and optimise server settings for enhanced engagement and retention.</li>
+                <br>
+                <li><strong>Monetisation Strategy:</strong> Developed and executed donation models, in-game purchases, and subscription-based features to drive revenue.</li>
+                <br>
+                <li><strong>Server Maintenance Automation:</strong> Automated server backups and maintenance tasks to ensure 99.9% uptime and smooth player experience.</li>
+            </ul>
+        </section>
+    
+        <section id="project-report" class="project-section">
+            <h2>Full Business Case Study</h2>
+            <br>
+            <p>If you'd like to dive deeper into the business strategies and technical analysis, check out the full report below. I would say it's the most aesthetically beautiful report I have ever made:</p>
+            <br>
+            <center><object class="pdf" data="{% static 'VanillaEuropaBusinessCaseStudy.pdf' %}" width="800" height="1160"></object></center>
+        </section>
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

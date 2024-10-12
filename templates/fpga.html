@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FPGA</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: FPGA-based CPU Design with SystemVerilog</h2> 
+            <br> 
+            <p>This project involved designing and implementing a fully functional computer from scratch using an FPGA programmed in SystemVerilog. The result was a custom-built CPU that successfully ran the classic game Pong, displayed on a VGA monitor. The project showcased not only low-level hardware design but also testing and optimisation of digital circuits.</p> 
+            <img src="{% static 'fpga.jpg' %}" alt="FPGA Project Image" class="project-main-image" width="500px">
+        </section> 
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>In this project, I collaborated with a teammate to develop a complete CPU from scratch using SystemVerilog. We used an FPGA as the target hardware platform and created the necessary modules for the ALU, PC, register, and VGA interface. By meticulously designing the hardware architecture, we ensured that the computer could execute basic operations and interface with external peripherals such as the VGA display. The final demonstration featured our custom version of the Pong game running on the system, illustrating the successful completion of this digital systems design challenge.</p> 
+        </section>
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2> 
+            <br> 
+            <ul> 
+                <li><strong>Custom CPU Design</strong>: Designed the architecture and logic for a CPU from scratch, including the ALU, control unit, and registers, using SystemVerilog on an FPGA.</li> 
+                <br>
+                <li><strong>SystemVerilog Programming</strong>: Leveraged SystemVerilog to program the FPGA, developing complex logic circuits and test benches to verify the functionality of each module.</li> 
+                <br>
+                <li><strong>VGA Display Interface</strong>: Integrated a VGA interface to display the Pong game, handling pixel generation, synchronisation, and video output timing.</li>
+                <br>
+                <li><strong>Hardware Optimisation</strong>: Optimised the CPU's hardware design to minimise resource usage on the FPGA while maintaining functional integrity.</li> 
+                <br>
+                <li><strong>Test Bench Development</strong>: Developed comprehensive test benches to simulate the CPU and ensure that all components operated as intended.</li>
+            </ul> 
+        </section> 
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>The following technologies and tools were essential in building this FPGA-based computer:</p> 
+            <br>
+            <ul>
+                <li><strong>FPGA</strong>: The hardware platform used for prototyping the custom CPU design.</li>
+                <br>
+                <li><strong>SystemVerilog</strong>: A hardware description language used to design and simulate the CPU and its components.</li> 
+                <br>
+                <li><strong>CPU Architecture</strong>: Designed the CPU's architecture from scratch, including the ALU, registers, and control logic.</li> 
+                <br>
+                <li><strong>Test Benches</strong>: Developed for verifying the logic of each module and testing the overall system performance.</li>
+                <br>
+                <li><strong>VGA Display</strong>: Used to interface with the monitor, enabling real-time rendering of the Pong game.</li> 
+                <br>
+                <li><strong>Low-level Programming</strong>: Focused on the transistor-level logic and low-level control necessary to operate the CPU.</li> 
+            </ul> 
+        </section> 
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Code</h2> 
+            <br>
+            <p>Here you can find the GitHub link to the code we developed for this project:</p> 
+            <br>
+            <center><a href="https://github.com/Alexander-Evans-Moncloa/FPGA-pong-game-from-scratch" target="_blank">https://github.com/Alexander-Evans-Moncloa/FPGA-pong-game-from-scratch</a></center>
+        </section> 
+        
+        </section> 
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

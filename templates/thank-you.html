@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="thank-you" class="section">
+            <h2>Thank You for Your Interest!</h2>
+            <br>
+            <br>
+            <center><p>We have added you to our mailing list, but don't fret. We hate spam mail as much as you do and have a policy of not sending more than 1 email every 3 months.</p></center>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <center><a href="/" class="add-to-cart-btn">Continue Browsing</a></center>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+    <script>
+    // Function to clear the cart and update the cart count
+    function clearCart() {
+        // Clear the cart from localStorage
+        localStorage.removeItem('cart');
+
+        // Reset the cart count displayed in the header
+        const cartCountElement = document.querySelector('.cart-count');
+        if (cartCountElement) {
+            cartCountElement.textContent = '0';
+        }
+    }
+
+    // Clear the cart and update the cart count when the page loads
+    document.addEventListener('DOMContentLoaded', clearCart);
+    </script>
+</body>
+</html>

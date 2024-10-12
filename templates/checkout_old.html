@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Online Store & Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout.css"> <!-- Separate CSS file for checkout page -->
+    <!-- PayPal SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&currency=USD"></script>
+    <!-- Stripe JS -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="okak.jpg" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="index.html">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li>
+                        <a href="cart.html" class="cart-icon">
+                            <img src="cart.png" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="checkout" class="section">
+            <h2>Checkout</h2>
+            <div class="checkout-container">
+                <!-- User Information Form -->
+                <form id="checkout-form" method="POST" action="{% url 'checkout' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                    </div>
+                    
+                    <!-- Spacer for separation -->
+                    <div class="spacer"></div>
+                    
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    
+                    <!-- Spacer for separation -->
+                    <div class="spacer"></div>
+                    
+                    <div class="form-group">
+                        <input type="text" id="address-line1" name="address-line1" placeholder="Address Line 1" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="address-line2" name="address-line2" placeholder="Address Line 2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="city" name="city" placeholder="Town/City" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="postal-code" name="postal-code" placeholder="Postal Code" required>
+                    </div>
+                    
+                    <input type="hidden" id="stripe_payment_id" name="stripe_payment_id" value="">
+
+                    <button type="submit">Submit</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+
+    <!-- Stripe Integration -->
+    <script>
+        const stripe = Stripe(pk_test_51Pu0Uv01NGci7Nay3dty3wyzCa9fH4vcoA0Rgf6NfUyPkvNEB9bA2LN9aPK80kKyWtKaTbQPrJH1tZcgBU1CJAuk00vPXvcFpX);
+
+        document.getElementById('stripe-button').addEventListener('click', async function(event) {
+            event.preventDefault();
+            const cart = loadCart();
+            const totalPrice = calculateTotalPrice(cart);
+
+            const response = await fetch('/create-checkout-session', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: document.getElementById('name').value,
+                    email: document.getElementById('email').value,
+                    address: document.getElementById('address').value,
+                    amount: totalPrice,
+                    cart: cart
+                }),
+            });
+            const session = await response.json();
+
+            const result = await stripe.redirectToCheckout({ sessionId: session.id });
+            if (result.error) {
+                alert(result.error.message);
+            }
+        });
+    </script>
+
+    <!-- PayPal Integration -->
+    <script>
+        paypal.Buttons({
+            createOrder: function(data, actions) {
+                const cart = loadCart();
+                const totalPrice = calculateTotalPrice(cart);
+
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: totalPrice // Total price from cart
+                        }
+                    }]
+                });
+            },
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Collect user details
+                    const userName = document.getElementById('name').value;
+                    const userEmail = document.getElementById('email').value;
+                    const userAddress = document.getElementById('address').value;
+
+                    // Store user details and payment info in the database
+                    storeOrderData(details, userName, userEmail, userAddress);
+
+                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    localStorage.removeItem('cart'); // Clear cart after successful payment
+                    window.location.href = 'thank-you.html'; // Redirect to thank you page
+                });
+            }
+        }).render('#paypal-button-container');
+
+        function storeOrderData(details, name, email, address) {
+            // Use fetch to send order data to the backend
+            fetch('/store-order', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    orderId: details.id,
+                    amount: details.purchase_units[0].amount.value,
+                    name: name,
+                    email: email,
+                    address: address,
+                    paymentMethod: 'PayPal'
+                }),
+            });
+        }
+    </script>
+
+    <!-- Cart and Checkout Helper Functions -->
+    <script>
+        function loadCart() {
+            return JSON.parse(localStorage.getItem('cart')) || [];
+        }
+
+        function calculateTotalPrice(cart) {
+            return cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+        }
+
+        // Update the cart count based on the total number of items in the cart
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+
+        // Call updateCartCount on page load to display the current cart count
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+
+    <script>
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            // Prevent the form from being blocked by JavaScript
+            event.preventDefault();
+            
+            // You can handle Stripe or other payment methods here
+            // For now, let's focus on basic form submission to the Django view
+            document.getElementById('checkout-form').submit();  // Submit the form
+        });
+    </script>
+</body>
+</html>

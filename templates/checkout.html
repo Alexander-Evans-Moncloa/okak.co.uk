@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="checkout" class="section">
+            <h2>Join mailing list</h2>
+            <p><center><i>No address required. No spam.</i></center></p>
+            <br>
+            <div class="checkout-container">
+                <!-- User Information Form, make address1, town and city required when activating payments -->
+                <form id="checkout-form" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="address-line1" name="address-line1" placeholder="Address Line 1">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="address-line2" name="address-line2" placeholder="Address Line 2">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="city" name="city" placeholder="Town/City">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="postal-code" name="postal-code" placeholder="Postal Code">
+                    </div>
+
+                    <center><button class="add-to-cart-btn" type="submit">Submit</button></center>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+
+    <!-- Basic Form Submission Script -->
+    <script>
+        // Function to get the CSRF token from the cookie
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Check if this cookie string begins with the name we want
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+        
+        // Add event listener to the form submission
+        document.getElementById('checkout-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+        
+            const formData = new FormData(event.target);
+            
+            const data = {
+                'first-name': formData.get('first-name'),
+                'last-name': formData.get('last-name'),
+                'email': formData.get('email'),
+                'address-line1': formData.get('address-line1'),
+                'address-line2': formData.get('address-line2'),
+                'city': formData.get('city'),
+                'postal-code': formData.get('postal-code'),
+            };
+        
+            // Retrieve the CSRF token
+            const csrfToken = getCookie('csrftoken'); // This should match the name of the CSRF cookie
+        
+            // Send the data using fetch
+            fetch('/submit-form/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': csrfToken, // Include CSRF token in the headers
+                },
+                body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('Form submitted successfully');
+                    window.location.href = '/thank-you'; // Redirect to thank you page
+                } else {
+                    console.error('Error:', data.error);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+        </script>
+        
+    <script>
+        // Update the cart count based on the total number of items in the cart
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                document.querySelector('.cart-count').textContent = totalItems;
+            }
+    
+        // Call updateCartCount on page load to display the current cart count
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+</html>

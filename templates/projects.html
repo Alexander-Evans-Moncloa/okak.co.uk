@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="projects" class="section">
+            <h2>Featured Projects</h2>
+            <div class="grid-container">
+
+                <!-- Project 4: Pick and Place Pirate -->
+                <a href="/pirate">
+                <div class="project">
+                    <img src="{% static 'pirate.gif' %}" alt="Pick and Place Pirate" class="project-thumbnail">
+                    <h3>Pick and Place Pirate</h3>
+                    <p>Led the development of a robotic system to autonomously locate and cover magnetic objects under a sandpit using various sensors and custom analog circuitry. Coordinated with a multidisciplinary team to optimise hardware-software integration and improve system performance.</p>
+                    <div class="tags">
+                        <span class="tag">MATLAB</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">Arduino MEGA 2560</span>
+                        <span class="tag">Sensor Fusion</span>
+                        <span class="tag">PCB/Circuit Design</span>
+                        <span class="tag">Team Communication</span>
+                        <span class="tag">Problem Solving</span>
+                    </div>
+                </div>
+                </a>
+    
+                <!-- Project 3: Full Stack Web Development -->
+                <a href="/fullstack">
+                <div class="project">
+                    <img src="{% static 'fullstack-web.jpg' %}" alt="Full Stack Web Development" class="project-thumbnail">
+                    <h3>Full Stack Web Development</h3>
+                    <p>Built and deployed this website's front end and back end using VSCode, Django, SQLite3, Docker and Nginx on Linux. Integrated data storage and processing in Python/SQL, optimised SEO in HTML and developed UI in CSS/JS.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Linux (Debian)</span>
+                        <span class="tag">HTML5</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Django</span>
+                        <span class="tag">SQLite3</span>
+                        <span class="tag">VSCode</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">Docker</span>
+                        <span class="tag">Nginx</span>
+                    </div>
+                </div>
+                </a>
+
+                <!-- Project 6: Grone (Ground Drone) -->
+                <a href="/grone">
+                <div class="project">
+                    <img src="{% static 'grone.jpg' %}" alt="Grone" class="project-thumbnail">
+                    <h3>Apocalypse Rover</h3>
+                    <p>Developed a ground-based drone capable of navigating rough terrain up to a mile away. Equipped with custom actuators and sensors, it was designed to be controlled remotely, providing real-time video feedback. Collaborated closely with team members to optimise embedded systems, leading to a runner-up position in the embedded systems category (Bath Hack).</p>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Radio Control</span>
+                        <span class="tag">Sensor Fusion</span>
+                        <span class="tag">Custom Actuators</span>
+                        <span class="tag">Chassis Design</span>
+                    </div>
+                </div>
+                </a>
+                
+                <!-- Project 2: Robot Integration Costing Analysis -->
+                <a href="/costing">
+                    <div class="project">
+                        <img src="{% static 'robot-integration.jpg' %}" alt="Robot Integration Costing" class="project-thumbnail">
+                        <h3>Robot Integration Costing Analysis</h3>
+                        <p>Performed a detailed costing analysis comparing cold rooms and mobile robotic arms with traditional dark store infrastructure, achieving significant cost, energy, and labor savings.</p>
+                        <div class="tags">
+                            <span class="tag">Cost Estimation</span>
+                            <span class="tag">Automation</span>
+                            <span class="tag">Articulated Robots</span>
+                            <span class="tag">Energy Efficiency</span>
+                            <span class="tag">Whole Life Cost</span>
+                            <span class="tag">ROI</span>
+                            <span class="tag">Sustainability</span>
+                        </div>
+                    </div>
+                </a>
+
+
+                <!-- Project 1: ROS2 Project -->
+                <a href="/ros2">
+                <div class="project">
+                    <img src="{% static 'ros2.jpg' %}" alt="ROS2 Project" class="project-thumbnail">
+                    <h3>ROS2 Computer Vision Robot</h3>
+                    <p>Developed a ROS2-based robot with pose detection, object recognition, and autonomous navigation using OpenCV, YOLOv8, and LiDAR. Integrating SLAM and control algorithms to enable robotic movement in dynamic environments.</p>
+                    <div class="tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">C++</span>
+                        <span class="tag">ROS2</span>
+                        <span class="tag">Gazebo</span>
+                        <span class="tag">Linux (Ubuntu Server 22.04)</span>
+                        <span class="tag">OpenCV</span>
+                        <span class="tag">YOLOv8</span>
+                        <span class="tag">SLAM</span>
+                        <span class="tag">Raspberry Pi</span>
+                        <span class="tag">Git</span>
+                    </div>
+                </div>
+                </a>
+                
+                <!-- Project 7: Wone (Watch Drone) -->
+                <a href="/wone">
+                    <div class="project">
+                        <img src="{% static 'wone.gif' %}" alt="Wone Watch Drone" class="project-thumbnail">
+                        <h3>Wone (Watch Drone)</h3>
+                        <p>Lead a team of 2 in the design of a wearable drone that can fly around the user for aerial cinematography. Used custom toroidal propellers, accelerometers, and lightweight batteries for a compact yet functional prototype. We pitched the product to investors.</p>
+                        <div class="tags">
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Arduino Nano</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Rapid Prototyping</span>
+                            <span class="tag">3D Printing</span> 
+                            <span class="tag">Costing</span>
+                            <span class="tag">Gyroscopic Sensors</span>
+                            <span class="tag">Embedded Systems</span>
+                           
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Project 9: FPGA Computer & Pong Game -->
+                <a href="/fpga">
+                <div class="project">
+                    <img src="{% static 'pong.gif' %}" alt="FPGA Project" class="project-thumbnail">
+                    <h3>FPGA Computer w/ Pong</h3>
+                    <p>Developed a functional computer with a colleague from scratch using an FPGA programmed in SystemVerilog, culminating in a working version of Pong displayed on a VGA monitor. Took charge in implementing thorough test benches and optimised hardware design.</p>
+                    <div class="tags">
+                        <span class="tag">FPGA</span>
+                        <span class="tag">SystemVerilog</span>
+                        <span class="tag">CPU Architecture</span>
+                        <span class="tag">Transistor Logic</span>
+                        <span class="tag">Hardware Design</span>
+                        <span class="tag">Test Benches</span>
+                        <span class="tag">Low-level Programming</span>
+                    </div>
+                </div>
+                </a>
+
+                 <!-- Project 11: Reverse Engineering Project -->
+                 <a href="/rev_eng">
+                 <div class="project">
+                    <img src="{% static 'reverse-engineering.jpg' %}" alt="Reverse Engineering Project" class="project-thumbnail">
+                    <h3>Reverse Engineering</h3>
+                    <p>Complete controlled disassembly of a jigsaw in order to create a detailed report on the user interaction and experience, the electromechanical mechanisms inside, manufacturing costs and techniques and a sustainability redesign.</p>
+                    <div class="tags">
+                        <span class="tag">UI/UX</span>
+                        <span class="tag">Manufacturing Techniques</span>
+                        <span class="tag">AC/DC Circuits</span>
+                        <span class="tag">Mechatronics</span>
+                        <span class="tag">Materials</span>
+                        <span class="tag">Gears</span>
+                        <span class="tag">Costing</span>
+                        <span class="tag">Sustainable Design</span>
+                    </div>
+                </div> 
+                </a>
+
+                <!-- Project 5: Mars Explorer -->
+                <a href="/mars_explorer">
+                <div class="project">
+                    <img src="{% static 'mars-explorer.jpg' %}" alt="Mars Explorer" class="project-thumbnail">
+                    <h3>Mars Explorer</h3>
+                    <p>Developing an autonomous Mars rover prototype in a team of 4 using OpenCV and Wi-Fi communication. Spearheaded software design with the usage of ArUco codes to localise vehicle and plan the device path based real-time visual inputs.</p>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Teamwork</span>
+                        <span class="tag">RRT* Path Planning</span>
+                        <span class="tag">MQTT</span>
+                        <span class="tag">Ethernet</span>
+                        <span class="tag">Wi-Fi</span>
+                        <span class="tag">IoT</span>
+                        <span class="tag">Simulink</span>
+                        <span class="tag">Embedded Design</span>
+                        <span class="tag">I2C Bus</span>
+                        <span class="tag">PID</span>
+                    </div>
+                </div>
+                </a>
+
+                <!-- Project 10: Robot Mouse Project -->
+                <a href="/mouse">
+                <div class="project">
+                    <img src="{% static 'mouse.gif' %}" alt="Robot Mouse Project" class="project-thumbnail">
+                    <h3>Robot Mouse</h3>
+                    <p>Worked in a team of 3 to create an automated vehicle that follows a 20m electromagnetic track in the fastest possible time. Implemented PID control and time optimisations using Arduino, with mechanical designs to enhance vehicle speed and stability. Fastest speed: 14s.</p>
+                    <div class="tags">
+                        <span class="tag">C++</span>
+                        <span class="tag">PID Control</span>
+                        <span class="tag">Microcontrollers</span>
+                        <span class="tag">Inderdisciplinary Coordination</span>
+                        <span class="tag">State Estimation</span>
+                        <span class="tag">Dynamic Control</span>
+                    </div>
+                </div> 
+                </a>
+
+                <!-- Project 8: Anaconda (Concrete Delivery System) -->
+                <a href="/anaconda">
+                    <div class="project">
+                        <img src="{% static 'anaconda.jpg' %}" alt="Anaconda Concrete System" class="project-thumbnail">
+                        <h3>Anaconda</h3>
+                        <p>Worked in a diverse team in the conceptualisation and design of a revolutionary concrete delivery system utilising snake-arm robotics and peristalsis for optimal performance. Coordinated market research and FEA simulations using Nastran for material selection, fostering collaboration between engineering teams.</p>
+                        <div class="tags">
+                            <span class="tag">Inventor</span>
+                            <span class="tag">Nastran</span>
+                            <span class="tag">FEA</span>
+                            <span class="tag">C++</span>
+                            <span class="tag">Soft Robotics</span>
+                            <span class="tag">Multi-disciplinary Collaboration</span>
+                            <span class="tag">Market Research</span>
+                            <span class="tag">Mechanical Design</span>
+                            <span class="tag">Agile Sprints</span>
+                            <span class="tag">Atlassian's Jira</span>
+                        </div>
+                    </div>
+                    </a>
+
+                <!-- Project 12: Software Business Analysis -->
+                <a href="/vanilla_europa">
+                    <div class="project">
+                        <img src="{% static 'vanilla-europa.jpg' %}" alt="Dark Store Robot" class="project-thumbnail">
+                        <h3>Software Business Analysis</h3>
+                        <p>An analysis of Vanilla Europa, a leading survival multiplayer Minecraft server, examining the server's revenue model, growth strategies, and key insights from 2018-2024 in collaboration with the owner.</p>
+                        <div class="tags">
+                            <span class="tag">Business Analysis</span>
+                            <span class="tag">Market Research</span>
+                            <span class="tag">Monetisation</span>
+                            <span class="tag">Server Infrastructure</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Project Management</span>
+                        </div>                        
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+    
+    <script>
+        // Update the cart count based on the total number of items in the cart
+            function updateCartCount() {
+                const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                document.querySelector('.cart-count').textContent = totalItems;
+            }
+
+        // Call updateCartCount on page load to display the current cart count
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+</html>

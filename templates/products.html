@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="product-details">
+            <div class="product-detail-container">
+                <!-- Carousel container -->
+                <div class="carousel-container">
+                    <div class="carousel">
+                        <!-- Add images and video to the carousel -->
+                        <div class="carousel-item active">
+                            <img src="{% static 'animated-piston.gif' %}" alt="Air Pump Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'pump.jpg' %}" alt="Air Pump Image 2">
+                        </div>
+                    </div>
+                    <!-- Navigation buttons -->
+                    <button class="carousel-control prev" onclick="moveCarousel(-1)">&#10094;</button>
+                    <button class="carousel-control next" onclick="moveCarousel(1)">&#10095;</button>
+                </div>
+        
+                <!-- Product details -->
+                <div class="product-detail-item" data-id="1" data-name="Okak Smart Pump" data-price="14.99">
+                    <h2>Okak Smart Pump</h2>
+                    <h3>Price: £14.99</h3>
+                    <p>
+                        All-in-1 solution for inflating <strong>balls</strong>, <strong>bike tyres</strong>, <strong>car tyres</strong> and <strong>truck tyres</strong> with <strong>hands-free automatic operation</strong>.
+                        <br><br>Use the up/down buttons to adjust desired pressure and the air pump stops automatically once reached. <br>
+                    </p>
+                    <br>
+                    <p><i>UK Shipping: Ships in 2-3 business days</i></p>
+                    <br>
+                    <button onclick="addToCart(this)" class="add-to-cart-button"><strong>Add to Cart</strong></button>
+                </div>
+            </div>
+            <!-- Notification Box -->
+            <div id="notification" class="notification hidden">
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>Item added to cart!</p>
+                <br>
+                <center><a href="/cart"><button class="add-to-cart-btn">View Cart</button></a></center>
+            </div>
+        </section>
+        
+        <section id="customer-reviews" class="section">
+            <h2>Customer Reviews</h2>
+            <div class="review-container">
+                <div class="review">
+                    <h3>Anonymous McAnonymousface</h3>
+                    <p>"The Smart Air Pump is a lifesaver! I use it for both my air bed and bike tyres. The automatic shutoff is a game changer!"</p>
+                </div>
+                <div class="review">
+                    <h3>David Attenborough</h3>
+                    <p>"Fast and efficient! I love that it’s hands-free and stops once it reaches the set pressure. Highly recommended."</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+    
+    <script>
+        let currentSlide = 0;
+
+        // Move carousel
+        function moveCarousel(direction) {
+            const items = document.querySelectorAll('.carousel-item');
+            items[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + items.length) % items.length;
+            items[currentSlide].classList.add('active');
+        }
+
+        // Add product to cart
+        function addToCart(button) {
+            const product = button.closest('.product-detail-item');
+            const productId = product.getAttribute('data-id');
+            const productName = product.getAttribute('data-name');
+            const productPrice = parseFloat(product.getAttribute('data-price'));
+
+            // Retrieve cart from localStorage or initialize it as an empty array
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            // Check if the product already exists in the cart
+            const existingProductIndex = cart.findIndex(item => item.id === productId);
+
+            // If product exists, increase quantity, else add it to the cart
+            if (existingProductIndex >= 0) {
+                cart[existingProductIndex].quantity += 1;
+            } else {
+                cart.push({ id: productId, name: productName, price: productPrice, quantity: 1 });
+            }
+
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Update the cart count displayed in the header
+            updateCartCount();
+
+            // Show notification to the user
+            showNotification();
+        }
+
+        // Global variable for notification timeout
+        let notificationTimeout;
+
+        // Show notification
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('hidden');  // Show the notification
+
+            // Clear previous timeout if it exists
+            if (notificationTimeout) {
+                clearTimeout(notificationTimeout);
+            }
+
+            // Hide the notification after 3 seconds
+            notificationTimeout = setTimeout(() => {
+                notification.classList.add('hidden');  // Start fading out
+            }, 3000);
+        }
+
+        // Update cart count
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            const cartCountElement = document.querySelector('.cart-count');
+
+            // Update the cart count text
+            if (cartCountElement) {
+                cartCountElement.textContent = totalItems;
+            } else {
+                console.error('Cart count element not found!');
+            }
+        }
+
+        // When the document is loaded, run these
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show the first carousel item
+            const items = document.querySelectorAll('.carousel-item');
+            items[currentSlide].classList.add('active');
+
+            // Update the cart count
+            updateCartCount();
+        });
+    </script>
+</body>
+</html>

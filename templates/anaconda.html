@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anaconda</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="project-overview" class="project-section">
+           <h2>Project: Anaconda – Automated Concrete Delivery System</h2>
+           <br> 
+           <p>This project focused on the development of a bio-inspired, electromechanical machine designed to revolutionise concrete delivery on construction sites. The system, known as “Anaconduit,” utilises a snake-arm motor capable of autonomously moving 200kg of concrete through difficult terrain. Designed with a robust understanding of the unique requirements in the concrete industry, this system integrates advanced material selection and cutting-edge finite element analysis to meet the demanding conditions of real-world construction environments.</p>
+           <img src="{% static 'anaconda.jpg' %}" alt="Anaconda Project Image" class="project-main-image"> 
+        </section>
+        <section id="project-description" class="project-section">
+           <h2>Project Description</h2>
+           <br> 
+           <p>Due to the shortage of concrete transportation technologies capable of traversing challenging construction sites, this project set out to design an automated concrete delivery system. The system was split into two key subsystems: the peristaltic biomimetic pipeline and the snake-arm robotic system responsible for moving the pipeline. Utilising advanced CAD software, such as Inventor and Inventor Nastran, we conducted rigorous finite element analysis (FEA) to simulate the forces acting on the system. The project incorporated comprehensive material selection, using Ansys to choose optimal rubber and metal components for the snake-arm system. Market research and direct consultation with construction foremen ensured the system’s viability and potential for industry disruption.</p>
+        </section>
+        <section id="key-features" class="project-section">
+           <h2>Key Features</h2>
+           <br> 
+           <ul>
+              <li><strong>Bio-Inspired Peristaltic System</strong>: Designed a snake-arm robotic system capable of autonomously deploying concrete in complex and confined construction sites.</li>
+              <br> 
+              <li><strong>Advanced Finite Element Analysis</strong>: Utilised Inventor Nastran and Ansys for simulating forces and selecting materials that can withstand heavy loads while maintaining flexibility and durability.</li>
+              <br> 
+              <li><strong>Optimised for Manufacture</strong>: All components were designed and tested with a focus on ease of manufacture, ensuring cost-effective production under £5000 for prototyping.</li>
+              <br> 
+              <li><strong>Market and Competitor Research</strong>: Conducted extensive research into current concrete delivery systems, gathering insights to refine the design and meet industry needs.</li>
+              <br> 
+              <li><strong>Integrated Mechanical and Electrical Systems</strong>: Combined mechanical design with electromechanical actuation to ensure precision in movement and control of the snake-arm system.</li>
+           </ul>
+        </section>
+        <section id="technologies-used" class="project-section">
+           <h2>Technologies Used</h2>
+           <br> 
+           <p>The following technologies and tools were critical in bringing this project to life:</p>
+           <br> 
+           <ul>
+              <li><strong>Autodesk Inventor</strong>: Used for CAD modeling and creating detailed designs of the pipeline and snake-arm components.</li>
+              <br> 
+              <li><strong>Inventor Nastran</strong>: Applied finite element analysis (FEA) to test material strengths and system integrity under operational loads.</li>
+              <br> 
+              <li><strong>Ansys</strong>: Assisted in selecting optimal rubber and metal materials based on the specific mechanical requirements of concrete transport systems.</li>
+              <br> 
+              <li><strong>TinkerCAD</strong>: Utilised for rapid prototyping and subsystem design iterations.</li>
+              <br> 
+              <li><strong>C++</strong>: Implemented for control algorithms that govern the robotic movements of the snake-arm system.</li>
+              <br> 
+              <li><strong>Mechatronic Design</strong>: Integrated mechanical and electrical systems, ensuring smooth motor actuation and material flow.</li>
+              <br> 
+              <li><strong>Business Planning</strong>: Developed a business plan incorporating competitor analysis, cost breakdown, and sustainability considerations.</li>
+              <br> 
+              <li><strong>Team Collaboration</strong>: Led the pipeline sub-system design, collaborating with a group of 5 to complete the project within a constrained timeframe.</li>
+           </ul>
+        </section>
+        <section id="project-gallery" class="project-section">
+           <h2>Project Gallery</h2>
+           <br> 
+           <p>Below are images showcasing the various components and progress of the Anaconda project:</p>
+           <div class="gallery-container"> <img src="{% static 'anaconda-image1.jpg' %}" alt="Anaconda Project Image 1" class="project-image"> <img src="{% static 'anaconda-image2.jpg' %}" alt="Anaconda Project Image 2" class="project-image"> <img src="{% static 'anaconda-image3.jpg' %}" alt="Anaconda Project Image 3" class="project-image"> </div>
+        </section>
+        </section> <section id="project-video" class="project-section"> 
+            <h2>Demonstration</h2> 
+            <br>
+            <p>Watch the video below to see a rapid prototype using real cement for a visualisation of the mechanism:</p> 
+        <video controls> <source src="{% static 'anaconda.mp4' %}" type="video/mp4"> Your browser does not support the video tag. </video> 
+        </section> 
+        <section id="project-report" class="project-section">
+           <h2>Full Technical Report</h2>
+           <br> 
+           <p>Below is a pdf of the full technical report:</p>
+           <br>
+           <center><object class="pdf" data="{% static '12187_Technical_Report_version3.pdf' %}" width="900" height="1180"></object></center>
+        </section>
+     </main>
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

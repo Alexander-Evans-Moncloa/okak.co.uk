@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grone</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: Apocalypse Rover</h2> 
+            <br> 
+            <p>This project involved the development of a rugged, ground-based drone capable of navigating challenging terrain up to a mile away. Designed for post-apocalyptic conditions, the rover was equipped with custom actuators and advanced sensors for remote control, providing real-time video feedback to operators. The project was a finalist in the Embedded Systems category at Bath Hack 2022, showcasing its innovative design and functionality.</p> 
+            <table>
+                <tr>
+                    <td><img src="{% static 'apocalypse-rover.jpg' %}" alt="Apocalypse Rover Image" class="project-main-image" width = "450px" length = "600px"></td>
+                    <td><img src="{% static 'apocalypse-rover2.jpg' %}" alt="Apocalypse Rover Image" class="project-main-image" width = "450px" length = "600px"></td>
+                </tr>
+            </table>
+            
+            
+        </section> 
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>As part of the Bath Hack 2022 competition, the Apocalypse Rover was designed to tackle extreme environments. My role centered on mechanical engineering, with a focus on creating a durable chassis capable of withstanding both internal stresses from the powertrain and external forces from the environment. The rover featured a servo-operated grabber jaw, allowing it to interact with objects in its surroundings, and was controlled via radio, enabling remote operation from up to a mile away.</p> 
+            <br>
+            <p>The electronics were housed in a protective casing specifically designed for rough terrain. Through rigorous system testing, I ensured the vehicle’s functionality in post-apocalyptic-like conditions, and the project was well-received by potential investors. Ultimately, we were named runners-up in the Embedded Systems category, a testament to the innovative design and functionality of the rover.</p> 
+        </section>
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2> 
+            <br> 
+            <ul> 
+                <li><strong>Remote Control with Real-Time Feedback</strong>: The rover was designed to be operated from a distance of up to a mile, providing real-time video feedback to the user.</li> 
+                <br>
+                <li><strong>Rugged Chassis</strong>: The chassis was custom-built to withstand extreme terrain and protect the internal electronics from environmental hazards.</li>
+                <br>
+                <li><strong>Custom Actuators</strong>: Equipped with custom-built actuators to control the servo-operated grabber jaw, allowing the rover to interact with objects in its environment.</li>
+                <br>
+                <li><strong>Sensor Fusion</strong>: The integration of various sensors provided comprehensive data for navigation and remote operation in challenging conditions.</li>
+                <br>
+                <li><strong>Radio Control</strong>: The rover’s movement and actions were controlled via radio, ensuring seamless long-distance operation.</li>
+            </ul> 
+        </section> 
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>The following technologies and tools were utilised to develop the Apocalypse Rover:</p> 
+            <br>
+            <ul>
+                <li><strong>C++</strong>: Used for programming the rover’s control system, including the servo-operated grabber jaw.</li>
+                <br>
+                <li><strong>Radio Control</strong>: Implemented for long-distance remote operation, ensuring reliable control over the rover.</li>
+                <br>
+                <li><strong>Custom Actuators</strong>: Developed for precise control of the rover’s interactive elements, such as the grabber jaw.</li>
+                <br>
+                <li><strong>Sensor Fusion</strong>: Integrated various sensors to enhance navigation and environmental interaction.</li>
+                <br>
+                <li><strong>Chassis Design</strong>: Designed a durable, protective housing for the rover’s electronics, ensuring safe operation in harsh environments.</li>
+            </ul> 
+        </section> 
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>These images show the range of the Grone device. The first image shows the device being controlled from Norwood house, and the other images are taken from Wessex house, 2 blocks of flats directly opposite to each other. The device was even tested on the Weston-super-Mare beach for the full mile of control.</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'rover-image1.jpg' %}" alt="Apocalypse Rover Image 1" class="project-image"> 
+                <p><center><i>Shown above is the control centre in Norwood house, looking at Wessex house.</i></p>
+                <img src="{% static 'rover-image2.jpg' %}" alt="Apocalypse Rover Image 2" class="project-image"> 
+                <p><center><i>Shown above is the robot in Wessex house, looking at Norwood house.</i></p>
+                <img src="{% static 'rover-image3.jpg' %}" alt="Apocalypse Rover Image 3" class="project-image"> 
+                <p><center><i>Due to the image not clearly showing Norwood house, this picture was taken as further proof of the robot's capabilities.</i></p>
+            </div> 
+        </section> 
+        <section id="project-link" class="project-section"> 
+            <h2>Further detail</h2> 
+            <br>
+            <p>Here you can visist the DevPost page we made at the time, alas many of the comments were made to be tongue-in-cheek as we were having a lot of fun making this:</p> 
+            <br>
+            <center><a href="https://devpost.com/software/grone" target="_blank">https://devpost.com/software/grone</a></center>
+            
+        </section> 
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

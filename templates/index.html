@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okak</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+
+    <main class="index">
+        <!-- Hero Section with GIF -->
+        <section class="hero">
+            <div class="hero-gif">
+                <img src="{% static 'wone.gif' %}" alt="Automatic air pump in action">
+                <a href="/projects" class="order-now-btn"><strong>View Projects</strong></a>
+            </div>
+        </section>
+    
+        <!-- Scroll-triggered Reason Section -->
+        <section id="reasons" class="reasons-section">
+            <div class="reason" id="reason1">
+                <h2>Engineering</h2>
+            </div>
+            <div class="reason" id="reason2">
+                <h2>tomorrow's robotics</h2>
+            </div>
+            <div class="reason" id="reason3">
+                <h2>in the today</h2>
+            </div>
+        </section>
+    
+        <!-- Order Now Call to Action -->
+        <section class="order-now">
+            <a href="/checkout" class="cta-order"><strong>Join Mailing List</strong></a>
+        </section>
+    </main>
+    
+
+    <footer>
+        <p>&copy; 2024 Okak</p>
+    </footer>
+
+    <script>
+        let hasAnimated = false; // To prevent re-triggering the animation
+    
+        // Scroll-triggered staggered animation for each reason
+        document.addEventListener('scroll', function() {
+            const reasonsSection = document.getElementById('reasons');
+            const reasons = document.querySelectorAll('.reason');
+            const sectionPosition = reasonsSection.getBoundingClientRect().top;
+            const screenPosition = window.innerHeight / 1.5;
+            
+            // Trigger the animation only once when the section is scrolled into view
+            if (sectionPosition < screenPosition && !hasAnimated) {
+                reasons.forEach((reason, index) => {
+                    setTimeout(() => {
+                        reason.classList.add('visible');
+                    }, index * 1000); // Stagger each reason by 1 second
+                });
+                hasAnimated = true; // Ensures the animation only triggers once
+            }
+        });
+    </script>
+    
+
+    <script>
+        // Update the cart count based on the total number of items in the cart
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            document.querySelector('.cart-count').textContent = totalItems;
+        }
+    
+        // Call updateCartCount on page load to display the current cart count
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+    </script>
+</body>
+</html>

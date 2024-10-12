@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROS2 Project</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+        <main> 
+            <section id="project-overview" class="project-section">
+                 <h2>Project: ROS2 Computer Vision Robotic System</h2> 
+                 <br> 
+                 <p>This project centers around the development of a cutting-edge robotic system leveraging ROS2 to integrate computer vision, object recognition, and autonomous navigation. Built using a Raspberry Pi running Linux Server 22.04, the robot employs advanced algorithms to perform tasks with high accuracy and precision, making it an ideal solution for dynamic, real-world environments.</p> 
+                 <img src="{% static 'ros2.jpg' %}" alt="ROS2 Project Image" class="project-main-image" width="800px">
+                 <p><center><i>Image of robot with computer vision functionality. Future improvements will include LiDAR and odometry addition, along with connection to motor shield for autonomous movement.</i></center></p>
+                 </section> 
+            <section id="project-description" class="project-section"> 
+                <h2>Project Description</h2> 
+                <br> 
+                <p>In this project, I designed and implemented a comprehensive robotic system aimed at demonstrating autonomous behavior through the fusion of computer vision and control algorithms. The core functionality revolves around object recognition and pose detection, allowing the robot to identify and track items in real time. Currently in the process of integrating LiDAR for precise environmental mapping and navigation, utilising SLAM (Simultaneous Localisation and Mapping) to ensure accurate loop closures. Mecanum wheels paired with rotary encoders enable omnidirectional movement, providing the robot with a high degree of maneuverability in confined and complex environments. This project was developed with a focus on solving real-world challenges and optimising robotic navigation for soft robotics applications, part of my master’s research.</p> 
+            </section>
+            <section id="key-features" class="project-section">
+                <h2>Key Features</h2> 
+                <br> 
+                <ul> 
+                    <li><strong>Computer Vision with Object Recognition and Pose Detection</strong>: Utilised OpenCV and YOLOv8 to enable accurate detection and tracking of objects in various lighting and environmental conditions.</li> 
+                    <br>
+                    <li><strong>Autonomous Navigation</strong>: Integrated ROS2 with SLAM algorithms to enable real-time path planning and localisation using LiDAR data.</li>
+                    <br>
+                    <li><strong>Omnidirectional Mobility</strong>: Designed a robotic base equipped with mecanum wheels, allowing the robot to move effortlessly in all directions, crucial for navigating tight spaces.</li>
+                    <br>
+                    <li><strong>Multi-Camera System</strong>: Implemented support for various cameras to test and validate the robustness of the computer vision algorithms across different hardware setups.</li> 
+                    <br>
+                    <li><strong>Seamless Python and C++ Integration</strong>: Leveraged ROS2's capabilities to fuse Python (for computer vision and high-level control) with C++ (for low-level control and SLAM integration).</li>
+                 </ul> 
+                </section> 
+                <section id="technologies-used" class="project-section">
+                    <h2>Technologies Used</h2> 
+                    <br>
+                    <p>The following technologies and tools were employed to bring this project to life:</p> 
+                    <br>
+                    <ul>
+                        <li><strong>Python</strong>: Primary language for implementing computer vision algorithms and high-level robotic control.</li>
+                        <br>
+                        <li><strong>C++</strong>: Used for performance-critical tasks like SLAM and real-time control of the robotic base.</li>
+                        <br>
+                        <li><strong>ROS2</strong>: The middleware that facilitates communication between different components, ensuring seamless integration between Python and C++ nodes.</li>
+                        <br>
+                        <li><strong>Gazebo</strong>: Utilised for simulating the robot's environment and testing navigation algorithms before deployment on hardware.</li>
+                        <br>
+                        <li><strong>OpenCV</strong>: A crucial tool for implementing pose detection and object recognition tasks.</li>
+                        <br>
+                        <li><strong>YOLOv8</strong>: State-of-the-art object detection algorithm, enabling real-time identification and localisation of objects in dynamic environments.</li> 
+                        <br>
+                        <li><strong>LiDAR</strong>: Provides precise environmental mapping, allowing the robot to navigate complex surroundings.</li> 
+                        <br>
+                        <li><strong>Linux Server 22.04</strong>: The operating system used on the Raspberry Pi for deploying and running the full stack of robotic software.</li> 
+                        <br>
+                        <li><strong>Raspberry Pi</strong>: The main computational platform for running the system, chosen for its versatility and compatibility with ROS2.</li>
+                        <br>
+                        <li><strong>SLAM</strong>: Used to map and localise the robot in real-time, enabling autonomous navigation in unfamiliar environments.</li>
+                    </ul> 
+                </section> 
+                <section id="project-gallery" class="project-section"> 
+                    <h2>Project Gallery</h2> 
+                    <br>
+                    <p>Here are some images showcasing the various aspects of the project:</p> 
+                    <div class="gallery-container"> 
+                        <img src="{% static 'ros2_1.jpg' %}" alt="ROS2 Project Image 1" class="project-image">
+                        <p><center><i>Images of custom computer vision program successfully detecting items.</i></center></p>
+                        <img src="{% static 'ros2_2.jpg' %}" alt="ROS2 Project Image 2" class="project-image">
+                        <p><center><i>Image of live facial detection and blurring in Python.</i></center></p>
+                        <img src="{% static 'ros2_3.jpg' %}" alt="ROS2 Project Image 3" class="project-image">
+                        <p><center><i>Gazebo simulation tool in ROS2. The full simulation is still a work in progress.</i></center></p>
+                    </div> 
+                </section> <section id="project-video" class="project-section"> 
+                        <h2>Demonstration</h2> 
+                        <br>
+                        <p>Watch a video of the pose recognition software detect crucial keypoints:</p> 
+                        <video controls> <source src="{% static 'ros2.mp4' %}" type="video/mp4"> Your browser does not support the video tag. </video> 
+                </section> 
+                <section id="project-link" class="project-section"> 
+                    <h2>Current Software Developments</h2> 
+                    <br>
+                    <p>Keep up to date with current software developments to this project on GitHub:</p> 
+                    <br>
+                    <br>
+                    <center><a href="https://github.com/Alexander-Evans-Moncloa" target="_blank">https://github.com/Alexander-Evans-Moncloa</a></center>
+                    
+                </section> 
+            </main>
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

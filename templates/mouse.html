@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: Robot Mouse Race Control Systems</h2> 
+            <br> 
+            <p>This project involved designing and building an automated vehicle, or "mouse," to follow a 20m electromagnetic track as quickly as possible using advanced control systems. I implemented PID control through an Arduino embedded system, optimising both the software and mechanical designs to ensure enhanced vehicle speed and stability, achieving a fastest time of 14 seconds.</p> 
+            <img src="{% static 'robot-mouse.jpg' %}" alt="Robot Mouse Race Image" class="project-main-image" width = "400px">
+        </section> 
+    
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>The goal of the project was to create an automated vehicle capable of following an electromagnetic track, utilising Arduino for control and microcontroller integration. This "mouse" robot used sensors and a sophisticated PID control system to track and adjust motor speeds based on the vehicle's position relative to the track. The project also involved mechanical enhancements to improve the vehicle’s speed, stability, and overall race performance. The mouse circuitry was designed to ensure precise control and response times, allowing for real-time speed adjustments and optimisation for track conditions.</p> 
+        </section>
+    
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>This project leveraged a variety of technologies:</p> 
+            <br>
+            <ul>
+                <li><strong>C++</strong>: Primary language for implementing the control algorithms and dynamic system adjustments on the Arduino microcontroller.</li>
+                <br>
+                <li><strong>PID Control</strong>: Used to continuously calculate and apply motor speed corrections, ensuring the robot remained on course along the track.</li>
+                <br>
+                <li><strong>Microcontrollers</strong>: Integrated Arduino for sensor data processing and motor control.</li>
+                <br>
+                <li><strong>State Estimation</strong>: Employed sensors to estimate the robot’s position relative to the track for real-time adjustments.</li>
+                <br>
+                <li><strong>Breadboards, Veroboards, and PCBs</strong>: Utilised for circuit assembly, ensuring efficient signal processing and control feedback.</li> 
+                <br>
+                <li><strong>Dynamic Control</strong>: Developed to manage motor power outputs based on sensor inputs, maximising speed while maintaining control.</li>
+            </ul> 
+        </section> 
+    
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>Below are images showcasing the project:</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'robot-mouse-image1.jpg' %}" alt="Robot Mouse Image 1" class="project-image"> 
+                <img src="{% static 'robot-mouse-image2.jpg' %}" alt="Robot Mouse Image 2" class="project-image"> 
+                <img src="{% static 'robot-mouse-image3.jpg' %}" alt="Robot Mouse Image 3" class="project-image">
+                <img src="{% static 'robot-mouse-image4.jpg' %}" alt="Robot Mouse Image 4" class="project-image">  
+            </div> 
+        </section> 
+    
+        <section id="project-video" class="project-section"> 
+            <h2>Project Demonstration</h2> 
+            <br>
+            <p>Watch the demonstration of the robot in action on race day:</p> 
+            <video controls> 
+                <source src="{% static 'mouse.mp4' %}" type="video/mp4"> 
+                Your browser does not support the video tag. 
+            </video> 
+        </section> 
+        <section id="project-report" class="project-section">
+            <h2>Full Technical Report</h2>
+            <br> 
+            <p>Below is a pdf of the full technical report:</p>
+            <br>
+            <center><object class="pdf" data="{% static 'aeem20_Mouse_Design_Report.pdf' %}" width="800" height="1160"></object></center>
+         </section>
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

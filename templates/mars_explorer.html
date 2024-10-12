@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mars Explorer</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: Mars Explorer - Autonomous Rover with Real-Time Command and Control</h2> 
+            <br> 
+            <p>This project involves the development of an autonomous Mars rover prototype using Arduino and Wi-Fi communication. The rover autonomously navigates using ArUco codes, retrieves items, and travels to specific locations based on real-time commands. This system was designed to be robust in harsh environments like Mars, providing safety assistance for astronauts in emergencies.</p> 
+            <img src="{% static 'mars-explorer.jpg' %}" alt="Mars Explorer Project Image" class="project-main-image" width="380px">
+        </section> 
+    
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>I led the design and development of an autonomous rover prototype that navigates by scanning ArUco codes to determine its position. The robot operates within a protective sphere to shield critical components from Mars-like conditions, and can collect medicine from a depository and transport it to an injured astronaut. The system communicates over Wi-Fi, integrating embedded systems, control algorithms, and real-time decision-making.</p> 
+            <br>
+            <p>Motors were directly connected to the wheels via machined inserts, optimised for swift rotation and obstacle avoidance. A key aspect of this project was managing the low center of gravity for stability, while implementing a precise PID control for motor driving using a custom-designed strip-board circuit.</p>
+        </section>
+    
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2> 
+            <br> 
+            <ul> 
+                <li><strong>Autonomous Navigation using ArUco Codes</strong>: The rover utilises a JeVois camera to scan ArUco codes, triangulating its position and enabling precise path navigation.</li> 
+                <br>
+                <li><strong>Wi-Fi Communication</strong>: The rover receives real-time commands via Wi-Fi from a ground station or satellite, ensuring autonomous task execution.</li>
+                <br>
+                <li><strong>PID Control System</strong>: Implemented PID for stable motor control, ensuring smooth and precise movement across difficult terrain.</li>
+                <br>
+                <li><strong>Compact Strip-Board Circuit Design</strong>: Electronics were carefully placed on a single layer of strip-board to fit within the spherical robot’s constraints.</li>
+                <br>
+                <li><strong>First-Order Filter for Motion Smoothing</strong>: Added a first-order filter to minimise the effect of jerky motions on the camera's ability to detect the target.</li> 
+            </ul> 
+        </section> 
+    
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>The following technologies were utilised for this project:</p> 
+            <br>
+            <ul>
+                <li><strong>C++</strong>: Used to implement motor control and navigation algorithms.</li>
+                <br>
+                <li><strong>Python</strong>: Employed for socket programming to establish Wi-Fi communication with the rover.</li>
+                <br>
+                <li><strong>Arduino</strong>: The embedded platform for controlling the robot's motors and processing sensor data.</li>
+                <br>
+                <li><strong>Simulink (MATLAB)</strong>: Used to design and simulate the PID controller for motor control.</li>
+                <br>
+                <li><strong>OpenCV</strong>: For implamentation of the ArUco code scanning software due to the variety of in-built computer vision libraries and support.</li>
+                <br>
+                <li><strong>ArUco Codes</strong>: Enabled object detection and navigation by triangulating the robot’s position.</li>
+                <br>
+                <li><strong>I2C Bus</strong>: Used for communication with the accelerometer to provide real-time feedback for motor control.</li> 
+            </ul> 
+        </section> 
+    
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>These images showcase the initial design, developed by our mechanical lead:</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'mars-explorer-image1.jpg' %}" alt="Mars Explorer Image 1" class="project-image">
+                <p><center><i>Initial render of mechanical system, courtesy of Raj.</i></p>
+                <img src="{% static 'mars-explorer-image2.jpg' %}" alt="Mars Explorer Image 2" class="project-image">
+                <p><center><i>First functional movement prototype with PID control.</i></p>
+            </div> 
+        </section>
+        
+        <section id="project-video" class="project-section"> 
+            <h2>Project Demonstration</h2> 
+            <br>
+            <p>Initial footage of ArUco codes being detected from a webcam with accurate live distance estimation.</p> 
+            
+            <video controls> 
+                <source src="{% static 'mars-explorer.mp4' %}" type="video/mp4"> 
+                Your browser does not support the video tag. 
+            </video>
+        </section> 
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wone</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: Wone</h2> 
+            <br> 
+            <p>The Wone project involved designing a wearable drone that can fly around the user for aerial cinematography. This innovative drone was built using custom toroidal propellers, gyroscopic sensors, and lightweight batteries to ensure a compact yet slightly functional prototype. The design allowed users to easily capture panoramic videos of themselves or their surroundings from a drone POV, all without needing to carry bulky equipment. The project was pitched to investors during the Bath Hack 2023 competition in a Dragon’s Den-style business presentation.</p> 
+            <img src="{% static 'wone.gif' %}" alt="Wone Wearable Drone Image" class="project-main-image" width="600px">
+        </section> 
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>As the electrical engineer for the Wone project, I was responsible for the complete design and implementation of the drone's embedded systems. Utilising an Arduino Nano, I developed custom code to integrate on-board accelerometers for stabilisation during flight, ensuring smooth operation and precise control. A key feature of the Wone was its use of toroidal propellers, which provided enhanced safety, reduced noise, and improved efficiency.</p> 
+            <br>
+            <p>The project utilised 3D printing for rapid prototyping and lightweight lithium batteries to maintain portability and ensure a long flight time. The final product combined the convenience of a wristwatch with the functionality of a flying drone, allowing users to record stunning aerial footage with ease. The design was pitched to potential investors, along with a comprehensive 5-year business plan, cost analysis, and scalability forecasts. The Wone prototype demonstrated the potential for wearable drones in consumer markets, making it a unique solution for hands-free cinematography.</p> 
+        </section>
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2> 
+            <br> 
+            <ul> 
+                <li><strong>Wearable Drone Design</strong>: A wristwatch form factor combined with drone functionality, allowing users to capture aerial footage effortlessly.</li> 
+                <br>
+                <li><strong>Custom Toroidal Propellers</strong>: Used to ensure safe operation around people and animals, while also reducing the noise output for a more pleasant user experience.</li> 
+                <br>
+                <li><strong>On-Board Accelerometers</strong>: Provided real-time stabilisation during flight, ensuring smooth and accurate control of the drone’s movements.</li>
+                <br>
+                <li><strong>Arduino Nano Control</strong>: Custom programming on the Arduino Nano enabled seamless control of the motors and sensors, while optimising power usage.</li>
+                <br>
+                <li><strong>3D Printing & Rapid Prototyping</strong>: Enabled the design and iteration of lightweight, functional components, essential for the compact nature of the wearable drone.</li>
+                <br>
+                <li><strong>Investors Pitch</strong>: A detailed 5-year business plan and cost forecast was prepared and presented to investors in a Dragon's Den-style competition, showcasing the potential market for wearable drones.</li>
+            </ul> 
+        </section> 
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>The following technologies and tools were used in the development of the Wone wearable drone:</p> 
+            <br>
+            <ul>
+                <li><strong>Arduino Nano</strong>: Provided the processing power for motor control, stabilisation, and data gathering from sensors.</li>
+                <br>
+                <li><strong>C++</strong>: Custom code was written in C++ to control the drone’s flight and stabilisation systems, leveraging real-time sensor data.</li>
+                <br>
+                <li><strong>Gyroscopic Sensors & Accelerometers</strong>: Used for drone stabilisation and orientation control during flight.</li>
+                <br>
+                <li><strong>3D Printing</strong>: Enabled rapid prototyping of drone components, ensuring a lightweight and durable structure.</li>
+                <br>
+                <li><strong>Rapid Prototyping</strong>: Allowed for the quick iteration and testing of designs to ensure both mechanical and electronic components functioned correctly.</li>
+                <br>
+                <li><strong>Cost Forecast & Business Plan</strong>: Developed a comprehensive 5-year business model, including cost analysis and scalability options for the Wone drone.</li>
+            </ul> 
+        </section> 
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>Here are some images showcasing the Wone drone and its development process:</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'wone-drone-image1.jpg' %}" alt="Wone Wearable Drone Image 1" class="project-image"> 
+                <img src="{% static 'wone-drone-image2.jpg' %}" alt="Wone Wearable Drone Image 2" class="project-image"> 
+                <img src="{% static 'wone-drone-image3.jpg' %}" alt="Wone Wearable Drone Image 3" class="project-image"> 
+            </div> 
+        </section> 
+        <section id="project-video" class="project-section"> 
+            <h2>Project Demonstration</h2> 
+            <br>
+            <p>Watch the video below for a short pitch of the Wone drone:</p> 
+            <video controls> <source src="{% static 'wone-drone-demo.mp4' %}" type="video/mp4"> Your browser does not support the video tag. </video> 
+        </section> 
+        <section id="project-code" class="project-section"> 
+            <h2>Here is the code we developed:</h2> 
+            <br>
+            <div style="display: flex; justify-content: center;">
+            <pre style="background-color: #282c34; padding: 20px 0; border-radius: 10px; color: white; font-family: 'Courier New', Courier, monospace; max-width: 100%; overflow-x: auto; text-align: left; font-size: small;">
+                <code>
+                  <span style="color: #61afef;">#include</span> &lt;Wire.h&gt;<br>
+                  <span style="color: #61afef;">#include</span> &lt;Adafruit_MMA8451.h&gt;<br>
+                  <span style="color: #61afef;">#include</span> &lt;Adafruit_Sensor.h&gt;<br>
+                  <span style="color: #d19a66;">#define</span> FL_MOTOR <span style="color: #e06c75;">3</span><br>
+                  <span style="color: #d19a66;">#define</span> FR_MOTOR <span style="color: #e06c75;">9</span><br>
+                  <span style="color: #d19a66;">#define</span> BR_MOTOR <span style="color: #e06c75;">10</span><br>
+                  <span style="color: #d19a66;">#define</span> BL_MOTOR <span style="color: #e06c75;">11</span><br><br>
+              
+                  Adafruit_MMA8451 mma = Adafruit_MMA8451();<br><br>
+              
+                  <span style="color: #61afef;">void</span> setup(<span style="color: #61afef;">void</span>) {<br>
+                    &nbsp;&nbsp;Serial.begin(<span style="color: #e06c75;">9600</span>);<br><br>
+              
+                    &nbsp;&nbsp;<span style="color: #c678dd;">if</span> (! mma.begin()) {<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;Serial.println(<span style="color: #98c379;">"Couldnt start"</span>);<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #c678dd;">while</span> (1);<br>
+                    &nbsp;&nbsp;}<br>
+                    &nbsp;&nbsp;pinMode(FL_MOTOR, OUTPUT);<br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">//pinMode(FR_MOTOR, OUTPUT);</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">//pinMode(BR_MOTOR, OUTPUT);</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">//pinMode(BL_MOTOR, OUTPUT);</span><br><br>
+              
+                    &nbsp;&nbsp;mma.setRange(MMA8451_RANGE_2_G);<br>
+                  }<br><br>
+              
+                  <span style="color: #61afef;">void</span> loop() {<br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">// Read the 'raw' data in 14-bit counts</span><br>
+                    &nbsp;&nbsp;mma.read();<br>
+                    &nbsp;&nbsp;Serial.print(<span style="color: #98c379;">"X:\t"</span>); Serial.print(mma.x);<br>
+                    &nbsp;&nbsp;Serial.print(<span style="color: #98c379;">"\tY:\t"</span>); Serial.print(mma.y);<br>
+                    &nbsp;&nbsp;Serial.print(<span style="color: #98c379;">"\tZ:\t"</span>); Serial.print(mma.z);<br>
+                    &nbsp;&nbsp;Serial.println();<br><br>
+              
+                    &nbsp;&nbsp;<span style="color: #7f848e;">/* Get a new sensor event */</span><br>
+                    &nbsp;&nbsp;sensors_event_t event;<br>
+                    &nbsp;&nbsp;mma.getEvent(&event);<br><br>
+              
+                    &nbsp;&nbsp;analogWrite(FL_MOTOR, map(mma.x, -<span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">0</span>, <span style="color: #e06c75;">256</span>));<br>
+                    &nbsp;&nbsp;analogWrite(FR_MOTOR, map(mma.y, -<span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">0</span>, <span style="color: #e06c75;">256</span>));<br>
+                    &nbsp;&nbsp;analogWrite(BR_MOTOR, map(mma.y, -<span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">256</span>, <span style="color: #e06c75;">0</span>));<br>
+                    &nbsp;&nbsp;analogWrite(BL_MOTOR, map(mma.x, -<span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">4000</span>, <span style="color: #e06c75;">256</span>, <span style="color: #e06c75;">0</span>));<br><br>
+              
+                    &nbsp;&nbsp;<span style="color: #7f848e;">/* Display the results (acceleration is measured in m/s^2)</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">Serial.print("X: \t"); Serial.print(event.acceleration.x); Serial.print("\t");</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">Serial.print("Y: \t"); Serial.print(event.acceleration.y); Serial.print("\t");</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">Serial.print("Z: \t"); Serial.print(event.acceleration.z); Serial.print("\t");</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">Serial.println("m/s^2 "); */</span><br><br>
+              
+                    &nbsp;&nbsp;<span style="color: #7f848e;">/* Get the orientation of the sensor */</span><br>
+                    &nbsp;&nbsp;<span style="color: #7f848e;">//uint8_t o = mma.getOrientation();</span><br><br>
+              
+                    &nbsp;&nbsp;delay(<span style="color: #e06c75;">5</span>);<br>
+                  }
+                </code>
+              </pre>
+            </div>
+              
+            
+        </section> 
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+

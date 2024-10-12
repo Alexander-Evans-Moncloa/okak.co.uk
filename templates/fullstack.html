@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" {% load static %}>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webdev</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
+</head>
+<body>
+    <header>
+        <div class="banner">
+            <img src="{% static 'okak.jpg' %}" alt="Okak Logo" class="logo" width="50" height="50"/>
+            <h1 class="site-title"><a href="/">Okak</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products">Products</a></li>
+                    <li><a href="/projects">Projects</a></li>
+                    <li><a href="/contact">Contact</a></li>
+                    <li>
+                        <a href="/cart" class="cart-icon">
+                            <img src="{% static 'cart.png' %}" alt="Cart" />
+                            <span class="cart-count">0</span> <!-- Initial count set to 0 -->
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main> 
+        <section id="project-overview" class="project-section">
+            <h2>Project: Full-Stack E-commerce Platform - okak.co.uk</h2> 
+            <br> 
+            <p>Developed and deployed a full-stack e-commerce platform using Django, SQLite3, and JavaScript. In process of integrating payment gateways like Stripe and PayPal, with backend optimisations for scalability. The project also included SEO improvements, digital marketing tools, and deployment using Docker on a Linux Debian server, fully managed through the command line.</p> 
+            <img src="{% static 'fullstack-web.jpg' %}" alt="E-commerce Platform Project Image" class="project-main-image">
+        </section> 
+    
+        <section id="project-description" class="project-section"> 
+            <h2>Project Description</h2> 
+            <br> 
+            <p>This project involved building a full-stack web application that serves as an e-commerce platform for a small business. I was responsible for both the frontend and backend development, integrating complex payment systems and optimising the user interface for higher conversion rates. The platform is hosted on a Debian Linux server and deployed using Docker for isolated, scalable environments. The entire setup was configured using the console, without a GUI, showcasing my proficiency in Linux system management.</p>
+            <br>
+            <p>On the backend, SQLite3 powers the database, while Django manages the actions on the Linux server to allow for JSON files to be processed and stored. The frontend is built with HTML, CSS, and JavaScript to create an engaging and intuitive browsing/shopping experience. To increase visibility, I implemented SEO strategies with the use of keywords and increasing backlinks to the site.</p>
+        </section>
+    
+        <section id="key-features" class="project-section">
+            <h2>Key Features</h2> 
+            <br> 
+            <ul> 
+                <li><strong>Full-Stack Development with Django and SQLite3</strong>: Python-based Django framework for the backend, with SQLite3 used to handle complex SQL queries efficiently.</li> 
+                <br>
+                <li><strong>Stripe and PayPal Integration</strong>: Seamless integration with Stripe and PayPal APIs for secure and reliable payment processing.</li>
+                <br>
+                <li><strong>Dockerised Deployment</strong>: The platform is containerised using Docker, allowing for easy deployment and scalability on Linux Debian servers.</li>
+                <br>
+                <li><strong>Linux (Debian) Server Management via Console</strong>: Configured, deployed, and maintained the platform entirely through the Linux command line, including server setup, database management, and environment handling.</li>
+                <br>
+                <li><strong>SEO and Digital Marketing</strong>: Optimised the website with SEO tools to increase visibility on Google.</li>
+            </ul> 
+        </section> 
+    
+        <section id="technologies-used" class="project-section">
+            <h2>Technologies Used</h2> 
+            <br>
+            <p>The following technologies were utilised for this project:</p> 
+            <br>
+            <ul>
+                <li><strong>Python</strong>: Core language used for backend development with Django, handling business logic, user authentication, and integration with payment systems.</li>
+                <br>
+                <li><strong>Linux (Debian)</strong>: Managed the entire server environment, including installation of dependencies, firewall setup, and application deployment using the console.</li>
+                <br>
+                <li><strong>SQL (SQLite3)</strong>: Utilised for managing and querying large datasets in the e-commerce platform.</li>
+                <br>
+                <li><strong>Docker</strong>: Containerised the platform to ensure smooth deployment and scalability across different environments.</li>
+                <br>
+                <li><strong>HTML, CSS, JavaScript</strong>: Built the frontend to ensure a smooth, responsive user interface for e-commerce functionality.</li>
+                <br>
+                <li><strong>VSCode</strong>: Used for coding the frontend and backend, optimising both for performance and maintainability.</li>
+            </ul> 
+        </section> 
+    
+        <section id="project-gallery" class="project-section"> 
+            <h2>Project Gallery</h2> 
+            <br>
+            <p>Some images showcasing the various aspects of the full-stack e-commerce platform:</p> 
+            <div class="gallery-container"> 
+                <img src="{% static 'ecommerce-image1.jpg' %}" alt="E-commerce Platform Image 1" class="project-image"> 
+                <center><i>Admin account for server backend, giving me access to user entered data (Names, emails and optional addressses) for updates or deliveries in the future.</i></center>
+                <img src="{% static 'ecommerce-image2.jpg' %}" alt="E-commerce Platform Image 2" class="project-image">
+                <center><i>Views.py file responsible for processing JSON from the frontend form. Full code for the website available on my <a href="https://github.com/Alexander-Evans-Moncloa" target=”_blank”><font color="#blue">GitHub page.</font></a></i></center>
+                <img src="{% static 'ecommerce-image3.jpg' %}" alt="E-commerce Platform Image 3" class="project-image">
+                <center><i>This image shows the websites Dockerisation for deployment on a Linux Debian server.</i></center>
+            </div> 
+        </section>
+    
+        <section id="project-video" class="project-section"> 
+            <h2>Project Demonstration</h2> 
+            <br>
+            <p>Watch the video below for a demonstration of the e-commerce platform's features:</p> 
+            <video controls> 
+                <source src="{% static 'fullstack.mp4' %}" type="video/mp4"> 
+                Your browser does not support the video tag. 
+            </video> 
+        </section> 
+    </main>
+    
+        <footer>
+            <p>&copy; 2024 Okak</p>
+        </footer>
+
+        <script>
+            // Update the cart count based on the total number of items in the cart
+                function updateCartCount() {
+                    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+                    const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                    document.querySelector('.cart-count').textContent = totalItems;
+                }
+        
+            // Call updateCartCount on page load to display the current cart count
+            document.addEventListener('DOMContentLoaded', updateCartCount);
+        </script>
+</body>
+</html>
+
