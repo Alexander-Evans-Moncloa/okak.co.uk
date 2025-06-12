@@ -24,11 +24,11 @@ Follow these steps to Dockerize the application:
 
 3.5. **Run the Docker container for testing:**
 
-```settings.py
+   ```settings.py
 
-# Security settings
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'yourdomain.com']  # Add your domain if applicable
-```
+   # Security settings
+   ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'yourdomain.com']  # Add your domain if applicable
+   ```
 
    ```bash
    docker run -d -p 8081:8081 YOUR_DOCKER_USERNAME/docker-django:0.1.2
