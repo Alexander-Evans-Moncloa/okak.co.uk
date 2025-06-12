@@ -1,6 +1,7 @@
+
 # okak.co.uk
 
-This repository contains all the necessary Django files for Dockerization, currently deployed at [okak.co.uk](https://okak.co.uk/). Please note that due to file size limitations, not all static files could be uploaded to GitHub. This repository aims to assist you in creating a similar product or portfolio website, a unique combination that may not have many examples available online.
+This repository contains all the necessary Django files for Dockerization, currently deployed at [okak.co.uk](https://okak.co.uk/). Due to file size limitations, not all static files could be uploaded to GitHub. This repository aims to assist you in creating a similar product or portfolio website, which may not have many examples available online.
 
 ## Dockerization Instructions (for Linux Ubuntu)
 
@@ -22,31 +23,31 @@ Follow these steps to Dockerize the application:
    ```
    *(You can use your preferred versioning system.)*
 
-3.5. **Run the Docker container for testing:**
-
-   ```settings.py
-
+4. **Update the Django settings for local testing:**
+   Add the following to your `settings.py` file to allow local access:
+   ```python
    # Security settings
    ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'yourdomain.com']  # Add your domain if applicable
    ```
 
+5. **Run the Docker container for testing:**
    ```bash
-   docker run -d -p 8081:8081 YOUR_DOCKER_USERNAME/docker-django:0.1.2
+   docker run -d -p 8000:8000 YOUR_DOCKER_USERNAME/docker-django:0.1.2
    ```
 
-5. **Push the Docker image to your repository:**
+6. **Push the Docker image to your repository:**
    ```bash
    docker push YOUR_DOCKER_USERNAME/docker-django:0.1.2
    ```
 
-6. **If Docker storage is full, remove an older image:**
+7. **If Docker storage is full, remove an older image:**
    ```bash
    docker image rm YOUR_DOCKER_USERNAME/docker-django:0.1.0
    ```
 
 ## Server Deployment
 
-To deploy on the server, run the following command for the ideal port (8000:8000 is an example):
+To deploy on the server, run the following command, adjusting the port as necessary (e.g., `8000:8000`):
 ```bash
 docker run -d -p 8000:8000 YOUR_DOCKER_USERNAME/docker-django:0.1.2
 ```
