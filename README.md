@@ -7,7 +7,7 @@ This repository contains all the necessary Django files for Dockerization, curre
 
 Follow these steps to Dockerize the application:
 
-1. **Open Docker Desktop and log in:**
+1. **Open Docker Desktop then also log in through terminal:**
    ```bash
    docker login
    ```
