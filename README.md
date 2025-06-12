@@ -1,21 +1,48 @@
 # okak.co.uk
-All django files, ready for Dockerisation.
 
-These exact files are running on https://okak.co.uk/ right now, however GitHub doesn't let me upload all of the files in static (too large). Should help you if you desire to make a similar product/portfolio website (a weird combination that I was unable to find many examples of online).
+This repository contains all the necessary Django files for Dockerization, currently deployed at [okak.co.uk](https://okak.co.uk/). Please note that due to file size limitations, not all static files could be uploaded to GitHub. This repository aims to assist you in creating a similar product or portfolio website, a unique combination that may not have many examples available online.
 
-Instructions to Dockerise (on Linux Ubuntu):
+## Dockerization Instructions (for Linux Ubuntu)
 
-#open docker desktop and log in
-docker login 
-cd /home/YOUR_COMPUTER_NAME/FOLDER_ALL_THESE_FILES_ARE_IN
-docker build --no-cache -t YOUR_DOCKER_USERNAME/docker-django:0.1.2 . #use whatever number system you want
-docker run -d -p 8081:8081 YOUR_DOCKER_USERNAME/docker-django:0.1.2
-docker push YOUR_DOCKER_USERNAME/docker-django:0.1.2
+Follow these steps to Dockerize the application:
 
+1. **Open Docker Desktop and log in:**
+   ```bash
+   docker login
+   ```
 
-#if docker is full, remove an older image
-docker image rm YOUR_DOCKER_USERNAME/docker-django:0.1.0
+2. **Navigate to the directory containing the files:**
+   ```bash
+   cd /home/YOUR_COMPUTER_NAME/FOLDER_ALL_THESE_FILES_ARE_IN
+   ```
 
-#on the server, run this:
+3. **Build the Docker image:**
+   ```bash
+   docker build --no-cache -t YOUR_DOCKER_USERNAME/docker-django:0.1.2 .
+   ```
+   *(You can use your preferred versioning system.)*
 
+4. **Run the Docker container:**
+   ```bash
+   docker run -d -p 8081:8081 YOUR_DOCKER_USERNAME/docker-django:0.1.2
+   ```
 
+5. **Push the Docker image to your repository:**
+   ```bash
+   docker push YOUR_DOCKER_USERNAME/docker-django:0.1.2
+   ```
+
+6. **If Docker storage is full, remove an older image:**
+   ```bash
+   docker image rm YOUR_DOCKER_USERNAME/docker-django:0.1.0
+   ```
+
+## Server Deployment
+
+To deploy on the server, run the following command:
+
+*(Add the specific command or instructions for server deployment here.)*
+
+---
+
+Feel free to customize any sections further or add additional information as needed!
