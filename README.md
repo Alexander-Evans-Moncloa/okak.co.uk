@@ -43,6 +43,3 @@ To deploy on the server, run the following command:
 
 *(Add the specific command or instructions for server deployment here.)*
 
----
-
-Feel free to customize any sections further or add additional information as needed!
