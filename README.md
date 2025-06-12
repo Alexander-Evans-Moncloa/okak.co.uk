@@ -39,7 +39,8 @@ Follow these steps to Dockerize the application:
 
 ## Server Deployment
 
-To deploy on the server, run the following command:
-
-*(Add the specific command or instructions for server deployment here.)*
+To deploy on the server, run the following command for the ideal port (8000:8000 is an example):
+```bash
+docker run -d -p 8000:8000 YOUR_DOCKER_USERNAME/docker-django:0.1.2
+```
 
